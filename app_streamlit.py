@@ -1,27 +1,4 @@
 # --------------------------
-# Auto-install missing packages (for Streamlit Cloud)
-# --------------------------
-import subprocess
-import sys
-
-required_packages = [
-    "streamlit",
-    "pandas",
-    "numpy",
-    "scikit-learn",
-    "tensorflow",
-    "xgboost",
-    "joblib",
-    "gdown"
-]
-
-for package in required_packages:
-    try:
-        __import__(package if package != "scikit-learn" else "sklearn")
-    except ImportError:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-# --------------------------
 # Imports
 # --------------------------
 import streamlit as st
@@ -30,7 +7,7 @@ import numpy as np
 import os
 import joblib
 import gdown
-from tensorflow.keras.models import load_model # type: ignore
+from tensorflow.keras.models import load_model # pyright: ignore[reportMissingImports]
 import xgboost as xgb
 
 # --------------------------
@@ -39,7 +16,8 @@ import xgboost as xgb
 FILES = {
     "lstm": "https://drive.google.com/uc?id=13OBdi-tM95IgInh2tVkF0x1xwfEgQw45",
     "xgb": "https://drive.google.com/uc?id=1TkCgpfeEBgeIXcTk-qMBVb9MwDL7_f",
-    "preprocessor": "https://drive.google.com/uc?id=10-P-HNOEk-DDTFZmYFkZ9xMgtsy9rKeN"
+    "preprocessor": "https://drive.google.com/uc?id=10-P-HNOEk-DDTFZmYFkZ9xMgtsy9rKeN",
+    "dataset": "https://drive.google.com/uc?id=1CU1qchDOO9t3cCgZcKJpmmcvcewZRa9o"  
 }
 
 # --------------------------
@@ -68,7 +46,7 @@ model_lstm, model_xgb, preprocessor = load_assets()
 # Streamlit UI
 # --------------------------
 st.set_page_config(page_title="Smart Energy Dashboard", layout="wide")
-st.title("⚡ Smart Energy Consumption Prediction")
+st.title(" Smart Energy Consumption Prediction")
 
 st.sidebar.header("Choose Prediction Model")
 model_choice = st.sidebar.radio("Select a model:", ["LSTM", "XGBoost"])
@@ -114,15 +92,16 @@ if uploaded_file:
         st.subheader(" LSTM Predictions")
     else:
         preds = model_xgb.predict(X)
-        st.subheader(" XGBoost Predictions")
+        st.subheader("XGBoost Predictions")
 
     df["Predicted Energy Usage"] = preds.flatten() if model_choice == "LSTM" else preds
     st.dataframe(df.head(20))
 
     # Download predictions
     csv_download = df.to_csv(index=False).encode("utf-8")
-    st.download_button("Download Predictions CSV", data=csv_download,
+    st.download_button("⬇ Download Predictions CSV", data=csv_download,
                        file_name="predicted_output.csv", mime="text/csv")
+
 
 
 
