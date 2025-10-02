@@ -1,0 +1,21 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Dataset files
+*.csv
+*.xlsx
+
+# Model files (optional)
+*.keras
+*.h5
+*.pkl
+
+# Logs
+*.log
+
