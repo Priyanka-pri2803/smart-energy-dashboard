@@ -30,7 +30,7 @@ import numpy as np
 import os
 import joblib
 import gdown
-from tensorflow.keras.models import load_model
+from tensorflow.keras.models import load_model # type: ignore
 import xgboost as xgb
 
 # --------------------------
@@ -86,7 +86,7 @@ expected_features = [
 
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
-    st.write("📊 Uploaded Data Preview:", df.head())
+    st.write(" Uploaded Data Preview:", df.head())
 
     # Add missing columns with 0
     for col in expected_features:
@@ -111,17 +111,17 @@ if uploaded_file:
     if model_choice == "LSTM":
         X_lstm = np.expand_dims(X, axis=1)
         preds = model_lstm.predict(X_lstm)
-        st.subheader("🔮 LSTM Predictions")
+        st.subheader(" LSTM Predictions")
     else:
         preds = model_xgb.predict(X)
-        st.subheader("🔮 XGBoost Predictions")
+        st.subheader(" XGBoost Predictions")
 
     df["Predicted Energy Usage"] = preds.flatten() if model_choice == "LSTM" else preds
     st.dataframe(df.head(20))
 
     # Download predictions
     csv_download = df.to_csv(index=False).encode("utf-8")
-    st.download_button("📥 Download Predictions CSV", data=csv_download,
+    st.download_button("Download Predictions CSV", data=csv_download,
                        file_name="predicted_output.csv", mime="text/csv")
 
 
