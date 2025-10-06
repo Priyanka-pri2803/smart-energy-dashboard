@@ -60,7 +60,7 @@ Authors
 Priyanka K. – Lead Developer, AI Model Implementation
 Contact: priyanka280303@gmail.com
 
-HithaShree K. – Frontend Design & Dashboard Implementation
+HithaShree K. – Lead Frontend Developer & Dashboard Implementation
 Contact: hithagshree.govi@gmail.com
 
 Acknowledgements
