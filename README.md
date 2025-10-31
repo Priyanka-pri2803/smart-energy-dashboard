@@ -48,7 +48,7 @@ Step 4: Run Streamlit dashboard
 streamlit run app_streamlit.py
 
 
-Your dashboard should open in the browser. Upload a CSV file and see live animated predictions, metrics, and charts.
+ Dashboard will open in the browser. Upload a CSV file and see live animated predictions, metrics, and charts.
 
 License
 
