@@ -57,11 +57,16 @@ Unauthorized copying or use of this project is prohibited.
 
 Authors
 
-Priyanka K. – Lead Developer, AI Model Implementation
-Contact: priyanka280303@gmail.com
 
-HithaShree K. – Lead Frontend Developer & Dashboard Implementation
-Contact: hithagshree.govi@gmail.com
+Priyanka K – Lead Frontend Developer & Project Implementer  
+> Designed and developed the complete dashboard interface, frontend visuals, and data integration components.  
+> Also implemented the AI model integration and managed the overall project development.  
+> Contact: priyanka280303@gmail.com  
+
+HithaShree K  – Supporting Developer (Dashboard & Testing)  
+> Contributed to interface testing and assisted in minor frontend adjustments during the implementation phase.  
+> Contact: hithagshree.govi@gmail.com  
+
 
 Acknowledgements
 
